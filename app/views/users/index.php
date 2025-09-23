@@ -11,7 +11,7 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-pink-200 via-pink-100 to-pink-300 min-h-screen font-sans text-gray-800">
+<body class="bg-gray-900 font-sans text-white">
 
   <!-- Navbar -->
   <nav class="bg-gray-800 border-b border-purple-900">
