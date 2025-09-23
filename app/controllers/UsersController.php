@@ -29,7 +29,7 @@ class UsersController extends Controller {
         $records_per_page = 5;
 
         
-        $all = $this->UserModel->page($q, $records_per_page, $page);
+        $all = $this->UsersModel->page($q, $records_per_page, $page);
         $data['users'] = $all['records'];
         $total_rows = $all['total_rows'];
 
