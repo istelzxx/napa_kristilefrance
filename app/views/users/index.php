@@ -79,7 +79,7 @@
           </thead>
           <tbody class="bg-gray-700">
             <?php foreach(html_escape($users) as $user): ?>
-              <tr class="hover:bg-purple-50 transition duration-200">
+              <tr class="border-b border-gray-600 hover:bg-gray-600">
                 <td class="py-3 px-4"><?=($user['id']);?></td>
                 <td class="py-3 px-4"><?=($user['last_name']);?></td>
                 <td class="py-3 px-4"><?=($user['first_name']);?></td>
