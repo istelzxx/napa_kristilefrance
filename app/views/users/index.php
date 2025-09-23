@@ -9,6 +9,24 @@
     body {
       background-color: #1a1a1a;
     }
+    
+  .pagination {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* optional, prevents overflow */
+  }
+  .pagination div {
+    display: inline-block; /* override Lavalust block */
+  }
+  .pagination a, .pagination span {
+    background-color: #6b21a8; /* purple-700 */
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
   </style>
 </head>
 <body class="bg-gray-900 font-sans text-white">
