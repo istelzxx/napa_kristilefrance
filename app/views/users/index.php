@@ -87,7 +87,7 @@
       <!-- Pagination -->
       <div class="mt-6 flex justify-center">
         <div class="pagination">
-          <?= $page; ?>
+          <?php echo $page; ?>
         </div>
       </div>
 
