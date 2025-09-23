@@ -20,12 +20,14 @@
   }
   .pagination a, .pagination span {
     background-color: #6b21a8; /* purple-700 */
-    color: white;
+    color: #1a1a1a;
     padding: 8px 12px;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
   }
+
+
 
   </style>
 </head>
