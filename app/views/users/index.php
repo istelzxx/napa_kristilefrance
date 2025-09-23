@@ -58,8 +58,8 @@
             name="q" 
             value="<?=html_escape($_GET['q'] ?? '')?>" 
             placeholder="Search user..." 
-            class="w-full border border-pink-200 bg-pink-50 rounded-l-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 text-gray-800">
-          <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white px-4 rounded-r-xl transition">
+            class="w-full border border-purple-200 bg-purple-50 rounded-l-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300 text-gray-800">
+          <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white px-4 rounded-r-xl transition">
             🔍
           </button>
         </form>
@@ -79,7 +79,7 @@
           </thead>
           <tbody class="bg-gray-700">
             <?php foreach(html_escape($users) as $user): ?>
-              <tr class="hover:bg-pink-50 transition duration-200">
+              <tr class="hover:bg-purple-50 transition duration-200">
                 <td class="py-3 px-4"><?=($user['id']);?></td>
                 <td class="py-3 px-4"><?=($user['last_name']);?></td>
                 <td class="py-3 px-4"><?=($user['first_name']);?></td>
@@ -92,13 +92,13 @@
                   <!-- Update Button -->
                   <a href="<?=site_url('users/update/'.$user['id']);?>"
                      class="text-purple-400 hover:text-purple-300">
-                    ✏️ Update
+                     Update
                   </a>
                   <!-- Delete Button -->
                   <a href="<?=site_url('users/delete/'.$user['id']);?>"
                      onclick="return confirm('Are you sure you want to delete this record?');"
                      class="text-purple-400 hover:text-purple-300;">
-                    🗑️ Delete
+                     Delete
                   </a>
                 </td>
               </tr>
