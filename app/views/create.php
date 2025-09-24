@@ -5,97 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Add New Student - Student Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root{
-            /* MATCHED TO DASHBOARD */
-            --background: linear-gradient(135deg, #1e3a8a 0%, #172554 55%, #000000 100%); /* blue-900 → blue-950 → black */
-            --primary: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);                 /* blue-500 → indigo-600 */
-            --secondary: linear-gradient(135deg, rgba(59,130,246,0.35), rgba(99,102,241,0.35)); /* soft blue/indigo blob */
-            --accent: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(99,102,241,0.25));    /* softer blob */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
         }
 
-        body{
-            background: var(--background);
-            min-height: 100vh;
-            color:#fff; /* default light text */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
-        .gradient-primary{ background: var(--primary); }
-        .gradient-secondary{ background: var(--secondary); }
-        .gradient-accent{ background: var(--accent); }
-
-        /* Dark glass similar to your list page */
-        .glass-card{
-            background: rgba(255,255,255,0.10);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.20);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-            color:#e5e7eb; /* gray-300 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
-        /* Inputs on dark: readable text, subtle borders, visible placeholders */
-        input.glass-card{
-            background: rgba(255,255,255,0.08);
-            color:#fff;
-            border-color: rgba(255,255,255,0.25);
-        }
-        input.glass-card::placeholder{ color: rgba(229,231,235,0.7); } /* gray-200/70 */
-
-        .input-focus:focus{
-            border-color:#3b82f6; /* blue-500 */
-            box-shadow:0 0 0 3px rgba(59,130,246,0.25);
-            outline:none;
+        .glass-input {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .hover-scale:hover{ transform: scale(1.05); }
-        .transition-all{ transition: all .3s ease; }
+        .glass-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            background: rgba(255, 255, 255, 1);
+        }
 
-        /* Ensure all typical text elements stay light by default */
-        label, h1, h2, p, span, a, .muted { color:#f9fafb; } /* near-white */
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
 
-        /* Small helper for secondary text when needed */
-        .text-subtle{ color:#d1d5db; } /* gray-300 */
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            background: var(--primary-gradient);
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            background: var(--secondary-gradient);
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            background: var(--accent-gradient);
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .preview-card {
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .preview-card:hover {
+            transform: translateX(5px);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
     </style>
 </head>
-<body class="min-h-screen relative overflow-hidden text-white">
-    <!-- Animated Background Shapes (now blue/indigo) -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-10 right-10 w-96 h-96 gradient-accent rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_6s_ease-in-out_infinite]"></div>
-        <div class="absolute bottom-10 left-10 w-96 h-96 gradient-secondary rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-[float_6s_ease-in-out_infinite] [animation-delay:3s]"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 gradient-primary rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-[pulse_4s_cubic-bezier(0.4,0,0.6,1)_infinite]"></div>
+<body class="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 relative overflow-hidden">
+    <!-- Animated Background Shapes -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
     </div>
 
-    <div class="container mx-auto p-8 max-w-4xl relative z-10">
+    <div class="container mx-auto p-8 max-w-6xl relative z-10">
         <!-- Header -->
-        <div class="flex items-center gap-4 mb-8">
-            <a href="/students" class="rounded-xl border border-white/30 hover-scale transition-all glass-card px-4 py-2 inline-flex items-center gap-2 text-gray-100 hover:bg-white/10">
-                <i data-lucide="arrow-left" class="h-5 w-5"></i>
+        <div class="flex flex-col sm:flex-row items-start gap-4 mb-8">
+            <a href="/students" class="glass-card rounded-xl px-4 py-2 inline-flex items-center gap-2 text-gray-700 hover:scale-105 transition-all shadow-lg">
+                <i class="fas fa-arrow-left"></i>
                 Back to Students
             </a>
-            <div class="flex items-center gap-3">
-                <div class="gradient-primary p-3 rounded-xl">
-                    <i data-lucide="user-plus" class="h-6 w-6 text-white"></i>
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <i class="fas fa-user-plus text-white text-lg"></i>
                 </div>
-                <!-- Blue → Indigo gradient title to match dashboard hero -->
-                <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
-                    Add New Student
-                </h1>
+                <div>
+                    <h1 class="text-4xl font-bold gradient-text">
+                        Add New Student
+                    </h1>
+                    <p class="text-gray-600 mt-1">Create a new student record</p>
+                </div>
             </div>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-8">
             <!-- Form Section -->
-            <div class="glass-card rounded-2xl p-8 hover:shadow-2xl transition-all">
-                <div class="flex items-center gap-3 mb-6">
-                    <i data-lucide="sparkles" class="h-5 w-5 text-indigo-400"></i>
-                    <h2 class="text-xl font-semibold">Student Information</h2>
+            <div class="glass-card rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-edit text-white text-sm"></i>
+                    </div>
+                    <h2 class="text-xl font-semibold text-gray-800">Student Information</h2>
                 </div>
 
                 <form method="POST" action="/students/create" class="space-y-6">
                     <div class="space-y-3">
-                        <label for="first_name" class="flex items-center gap-2 text-base font-medium">
-                            <i data-lucide="user" class="h-4 w-4 text-blue-400"></i>
+                        <label for="first_name" class="flex items-center gap-2 text-base font-medium text-gray-700">
+                            <i class="fas fa-user text-purple-500"></i>
                             First Name
                         </label>
                         <input
@@ -103,15 +184,15 @@
                             name="first_name"
                             type="text"
                             required
-                            class="w-full rounded-xl border input-focus h-12 px-4 glass-card transition-all"
+                            class="w-full rounded-xl h-12 px-4 glass-input text-gray-700"
                             placeholder="Enter first name"
                             oninput="updatePreview()"
                         />
                     </div>
 
                     <div class="space-y-3">
-                        <label for="last_name" class="flex items-center gap-2 text-base font-medium">
-                            <i data-lucide="user" class="h-4 w-4 text-indigo-400"></i>
+                        <label for="last_name" class="flex items-center gap-2 text-base font-medium text-gray-700">
+                            <i class="fas fa-user text-indigo-500"></i>
                             Last Name
                         </label>
                         <input
@@ -119,15 +200,15 @@
                             name="last_name"
                             type="text"
                             required
-                            class="w-full rounded-xl border input-focus h-12 px-4 glass-card transition-all"
+                            class="w-full rounded-xl h-12 px-4 glass-input text-gray-700"
                             placeholder="Enter last name"
                             oninput="updatePreview()"
                         />
                     </div>
 
                     <div class="space-y-3">
-                        <label for="email" class="flex items-center gap-2 text-base font-medium">
-                            <i data-lucide="mail" class="h-4 w-4 text-blue-400"></i>
+                        <label for="email" class="flex items-center gap-2 text-base font-medium text-gray-700">
+                            <i class="fas fa-envelope text-purple-500"></i>
                             Email Address
                         </label>
                         <input
@@ -135,18 +216,18 @@
                             name="email"
                             type="email"
                             required
-                            class="w-full rounded-xl border input-focus h-12 px-4 glass-card transition-all"
+                            class="w-full rounded-xl h-12 px-4 glass-input text-gray-700"
                             placeholder="Enter email address"
                             oninput="updatePreview()"
                         />
                     </div>
 
                     <div class="flex gap-4 pt-6">
-                        <button type="submit" class="flex-1 gradient-primary text-white border-0 rounded-xl h-12 hover-scale transition-all shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2">
-                            <i data-lucide="save" class="h-5 w-5"></i>
+                        <button type="submit" class="flex-1 btn-primary rounded-xl h-12 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2 font-semibold">
+                            <i class="fas fa-save"></i>
                             Save Student
                         </button>
-                        <a href="/" class="px-8 rounded-xl border border-white/30 hover-scale transition-all glass-card inline-flex items-center justify-center text-gray-100 hover:bg-white/10">
+                        <a href="/" class="px-8 rounded-xl btn-secondary inline-flex items-center justify-center font-medium">
                             Cancel
                         </a>
                     </div>
@@ -154,62 +235,120 @@
             </div>
 
             <!-- Preview Section -->
-            <div class="glass-card rounded-2xl p-8 hover:shadow-2xl transition-all">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="gradient-primary p-2 rounded-lg">
-                        <i data-lucide="user" class="h-4 w-4 text-white"></i>
+            <div class="space-y-6">
+                <!-- Live Preview Card -->
+                <div class="glass-card rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-eye text-white text-sm"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold text-gray-800">Live Preview</h2>
                     </div>
-                    <h2 class="text-xl font-semibold">Preview</h2>
+
+                    <div class="space-y-4">
+                        <div class="preview-card glass-card rounded-xl p-4" style="border-left-color: #667eea;">
+                            <p class="text-sm text-gray-500 mb-1">Full Name</p>
+                            <p class="font-semibold text-gray-800" id="preview-name">First Last</p>
+                        </div>
+
+                        <div class="preview-card glass-card rounded-xl p-4" style="border-left-color: #764ba2;">
+                            <p class="text-sm text-gray-500 mb-1">Email Address</p>
+                            <p class="font-semibold text-gray-800" id="preview-email">email@example.com</p>
+                        </div>
+
+                        <div class="preview-card glass-card rounded-xl p-4" style="border-left-color: #10b981;">
+                            <p class="text-sm text-gray-500 mb-1">Status</p>
+                            <span class="status-badge">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                Ready to Save
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="space-y-4">
-                    <div class="glass-card rounded-xl p-4 border-l-4" style="border-left-color:#60a5fa;"> <!-- blue-400 -->
-                        <p class="text-sm text-subtle mb-1">Full Name</p>
-                        <p class="font-semibold" id="preview-name">First Last</p>
+                <!-- Tips Card -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-lightbulb text-white text-sm"></i>
+                        </div>
+                        <h3 class="font-semibold text-gray-800">Pro Tips</h3>
                     </div>
-
-                    <div class="glass-card rounded-xl p-4 border-l-4" style="border-left-color:#818cf8;"> <!-- indigo-400 -->
-                        <p class="text-sm text-subtle mb-1">Email</p>
-                        <p class="font-semibold" id="preview-email">email@example.com</p>
-                    </div>
-
-                    <div class="glass-card rounded-xl p-4 border-l-4" style="border-left-color:#34d399;"> <!-- green-400 -->
-                        <p class="text-sm text-subtle mb-1">Status</p>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm" style="background: rgba(16,185,129,0.18); color:#86efac;">
-                            Ready to Save
-                        </span>
-                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                            Use a valid email address for notifications
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                            Double-check spelling before saving
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                            All fields are required
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Pro tip box re-themed to blue/indigo -->
-                <div class="mt-8 p-4 glass-card rounded-xl">
-                    <div class="flex items-center gap-2 mb-2">
-                        <i data-lucide="sparkles" class="h-4 w-4 text-indigo-400"></i>
-                        <span class="text-sm font-medium">Pro Tip</span>
+                <!-- Quick Actions -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <h3 class="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-bolt text-purple-500"></i>
+                        Quick Actions
+                    </h3>
+                    <div class="space-y-3">
+                        <button type="button" class="w-full p-3 text-left rounded-lg bg-gradient-to-r from-purple-50 to-indigo-50 hover:from-purple-100 hover:to-indigo-100 transition-all border border-purple-200">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-magic text-purple-500"></i>
+                                <div>
+                                    <p class="font-medium text-gray-800">Auto-fill Demo Data</p>
+                                    <p class="text-xs text-gray-500">Fill form with sample data</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button type="button" class="w-full p-3 text-left rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 transition-all border border-blue-200">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-eraser text-blue-500"></i>
+                                <div>
+                                    <p class="font-medium text-gray-800">Clear All Fields</p>
+                                    <p class="text-xs text-gray-500">Reset the form</p>
+                                </div>
+                            </div>
+                        </button>
                     </div>
-                    <p class="text-sm text-subtle">
-                        Use a valid email address for notifications and updates.
-                    </p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        lucide.createIcons();
-        function updatePreview(){
+        function updatePreview() {
             const first = document.getElementById('first_name').value || 'First';
-            const last  = document.getElementById('last_name').value  || 'Last';
-            const email = document.getElementById('email').value      || 'email@example.com';
+            const last = document.getElementById('last_name').value || 'Last';
+            const email = document.getElementById('email').value || 'email@example.com';
+            
             document.getElementById('preview-name').textContent = first + ' ' + last;
             document.getElementById('preview-email').textContent = email;
         }
-    </script>
 
-    <!-- Minimal keyframes used above -->
-    <style>
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        @keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
-    </style>
+        // Quick Actions functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-fill demo data
+            document.querySelector('button[type="button"]:first-of-type').addEventListener('click', function() {
+                document.getElementById('first_name').value = 'John';
+                document.getElementById('last_name').value = 'Doe';
+                document.getElementById('email').value = 'john.doe@example.com';
+                updatePreview();
+            });
+
+            // Clear all fields
+            document.querySelector('button[type="button"]:last-of-type').addEventListener('click', function() {
+                document.getElementById('first_name').value = '';
+                document.getElementById('last_name').value = '';
+                document.getElementById('email').value = '';
+                updatePreview();
+            });
+        });
+    </script>
 </body>
 </html>
