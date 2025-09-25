@@ -1,0 +1,51 @@
+body {
+    background-color: #f5f5dc; /* beige background */
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #5a4a42; /* darker beige/brown for text */
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 70%;
+    background-color: #fffaf0; /* light beige for table */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #deb887; /* burlywood/beige tone */
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f0e6d6; /* hover effect beige */
+}
+
+button {
+    background-color: #deb887; /* beige buttons */
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #cdaa7d; /* darker beige on hover */
+}
+
