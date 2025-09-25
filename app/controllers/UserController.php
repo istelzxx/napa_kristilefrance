@@ -92,6 +92,6 @@ class UserController extends Controller {
     }
     public function delete($id){
         $this->UserModel->delete($id);
-        redirect('user/create/');
+        redirect('user/index');
     }
 }
