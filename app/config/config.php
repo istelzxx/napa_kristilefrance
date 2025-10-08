@@ -79,7 +79,7 @@ $config['ENVIRONMENT']             = 'production';
 | WARNING: You MUST set this value!
 |
 */
-$config['base_url'] 				= '';
+$config['base_url'] 				= 'https://napa-kristilefrance.onrender.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -212,7 +212,7 @@ $config['language'] 				= 'en-US';
 $config['sess_driver']             = 'file';
 $config['sess_cookie_name']        = 'LLSession';
 $config['sess_expiration']         = 7200;
-$config['sess_save_path']          = '';
+$config['sess_save_path']          = APP_DIR .'runtime/sessions/';
 $config['sess_match_ip']           = TRUE;
 $config['sess_match_fingerprint']  = TRUE;
 $config['sess_time_to_update']     = 300;
