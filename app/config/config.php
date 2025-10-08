@@ -79,8 +79,8 @@ $config['ENVIRONMENT']             = 'development';
 | WARNING: You MUST set this value!
 |
 */
-//$config['base_url'] 				= 'https://mina-judel.onrender.com';
-$config['base_url'] 				= 'http://localhost:3000/';
+$config['base_url'] 				= 'https://mina-judel.onrender.com';
+//$config['base_url'] 				= 'http://localhost:3000/';
 
 /*
 |--------------------------------------------------------------------------
