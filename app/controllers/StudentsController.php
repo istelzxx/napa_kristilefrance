@@ -12,6 +12,7 @@ class StudentsController extends Controller {
         parent::__construct();
         $this->call->model('StudentsModel');
         $this->call->library('pagination');
+        $this->call->library('auth');
 
         $this->pagination->set_theme('custom');
         $this->pagination->set_custom_classes([
@@ -65,11 +66,14 @@ class StudentsController extends Controller {
         $data['current_page'] = $page;
         $data['total_pages'] = ceil($total_rows / $per_page);
 
+        
+        $data['auth'] = $this->auth; // 🔹 Pass auth object to view
         $this->call->view('all', $data);
+
     }
 
-public function create()
-{
+    public function create()
+    {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
             'first_name' => trim($_POST['first_name']),
@@ -82,7 +86,7 @@ public function create()
     }
 
     $this->call->view('create');
-}
+    }
 
 // public function store()
 // {
@@ -118,8 +122,8 @@ public function create()
 // }
 
 
-public function edit($id)
-{
+    public function edit($id)
+    {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
             'first_name' => trim($_POST['first_name']),
@@ -133,11 +137,11 @@ public function edit($id)
 
     $student = $this->StudentsModel->find($id);
     $this->call->view('edit', ['student' => $student]);
-}
+    }
 
 
-public function update($id)
-{
+    public function update($id)
+    {
     $student = $this->StudentsModel->find($id);
     if (!$student) {
         $_SESSION['error'] = "Student not found.";
@@ -178,27 +182,9 @@ public function update($id)
     }
 }
 
-public function delete($id)
+    public function delete($id)
 {
-    $student = $this->StudentsModel->find($id);
-    if (!$student) {
-        $_SESSION['error'] = "Student not found.";
-        header('Location: /students'); // Changed from '/' to '/students'
-        exit;
-    }
-
-    $deleted = $this->StudentsModel->delete($id);
-    if ($deleted) {
-        $_SESSION['success'] = "Student deleted successfully.";
-    } else {
-        $_SESSION['error'] = "Failed to delete student.";
-    }
-    header('Location: /students'); // Changed from '/' to '/students'
-    exit;
-}
-
-function login()
-{
-    $this->call->view('login');
+    $this->db->table('student')->where('id', $id)->delete();
+    redirect('students');
 }
 }

@@ -377,6 +377,15 @@
                 <?= $pagination_html ?>
             </div>
         <?php endif; ?>
+        <!-- Logout Button -->
+        <div class="flex justify-center mt-8">
+            <a href="<?= site_url('auth/logout'); ?>" 
+               class="action-btn delete-btn"
+               onclick="return confirm('Are you sure you want to log out?')">
+                <i class="fas fa-sign-out-alt mr-2"></i>
+                Logout
+            </a>
+        </div>
 
         <!-- Additional pagination info -->
         <?php if (isset($current_page) && isset($total_pages)): ?>
@@ -387,6 +396,7 @@
             </div>
         <?php endif; ?>
     </div>
+    
 
     <script>
         // Auto-submit search form on input with debounce

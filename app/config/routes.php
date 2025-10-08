@@ -47,8 +47,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 $router->get('/', 'StudentsController::index');
 
 // Students routes - CORRECTED to match your existing views
-$router->get('/students', 'StudentsController::index');                    // Main students list
-$router->get('/students/index', 'StudentsController::index');              // Alternative list path
+$router->get('/students', 'StudentsController::index');                    // Main students list           
 $router->get('/students/index/{page}', 'StudentsController::index');       // Paginated list
 
 // Create student routes
@@ -62,14 +61,10 @@ $router->post('/students/edit/{id}', 'StudentsController::edit');
     // Handle edit form
 
 // Delete student route
-$router->get('/students/delete/{id}', 'StudentsController::delete');       // Delete student
+$router->get('/students/delete/{id}', 'StudentsController::delete'); 
 
-$router->get('/login', 'StudentsController::login');  
-
-// Alternative shorter routes (if you want them - but keep /students/ ones for compatibility)
-// $router->get('/create', 'StudentsController::create');
-// $router->post('/store', 'StudentsController::store');
-// $router->get('/edit/{id}', 'StudentsController::edit');
-// $router->post('/update/{id}', 'StudentsController::update');
-// $router->get('/delete/{id}', 'StudentsController::delete');
-// $router->get('/index/{page}', 'StudentsController::index');
+// Authentication routes
+$router->match('/auth/login', 'AuthController::login', ['GET','POST']);
+$router->get('/auth/logout', 'AuthController::logout');
+$router->match('/auth/register', 'AuthController::register', ['GET','POST']);
+$router->get('/auth/dashboard', 'AuthController::dashboard');
