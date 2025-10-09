@@ -137,9 +137,7 @@ if (empty($this->config['cookie_name']))
 	    if ( ! empty($this->config['sess_driver']) AND $this->config['sess_driver'] == 'file' ) {
 			require_once 'Session/FileSessionHandler.php';
 			$handler = new FileSessionHandler();
-			if (!headers_sent()) {
-				session_set_save_handler($handler, TRUE);
-			}
+			session_set_save_handler($handler, TRUE);
 		} elseif ( ! empty($this->config['sess_driver']) AND $this->config['sess_driver'] == 'database' ) {
 
 		}
