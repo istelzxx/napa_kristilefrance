@@ -88,39 +88,6 @@ class StudentsController extends Controller {
     $this->call->view('create');
     }
 
-// public function store()
-// {
-//     $postData = [
-//         'first_name' => trim($_POST['first_name'] ?? ''),
-//         'last_name'  => trim($_POST['last_name'] ?? ''),
-//         'email'      => trim($_POST['email'] ?? '')
-//     ];
-
-//     // Basic validation
-//     if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
-//         $_SESSION['error'] = "All fields are required.";
-//         return redirect('/students/create');
-//     }
-
-//     // Email validation
-//     if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
-//         $_SESSION['error'] = "Please enter a valid email address.";
-//         return redirect('/students/create');
-//     }
-
-//     // Insert record
-//     $inserted = $this->StudentsModel->insert($postData);
-// if ($inserted) {
-//     $_SESSION['success'] = "Student added successfully.";
-//     header("Location: /");
-//     exit;  // 👈 this is critical
-// }
-//  else {
-//         $_SESSION['error'] = "Failed to add student.";
-//         return redirect('/students/create');
-//     }
-// }
-
 
     public function edit($id)
     {

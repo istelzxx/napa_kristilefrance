@@ -29,8 +29,7 @@ class Auth
             'first_name' => $first_name,
             'last_name' => $last_name,
             'password' => $hash,
-            'role' => $role,
-            'created_at' => date('Y-m-d H:i:s')
+            'role' => $role
         ]);
     }
     /**
@@ -38,8 +37,7 @@ class Auth
      */
     public function login($first_name, $last_name, $password)
     {
-    $first_name = $first_name;
-    $last_name = $last_name;
+        
     $password = $password;
 
     // Allow login via username
