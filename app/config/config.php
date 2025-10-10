@@ -79,7 +79,11 @@ $config['ENVIRONMENT']             = 'development';
 | WARNING: You MUST set this value!
 |
 */
+<<<<<<< HEAD
 $config['base_url'] 				= 'https://napa-kristilefrance.onrender.com/';
+=======
+$config['base_url'] 				= 'https://napa-kristilefrance.onrender.com';
+>>>>>>> 250fe5a (NAPA)
 
 /*
 |--------------------------------------------------------------------------
