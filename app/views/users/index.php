@@ -68,6 +68,14 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
+    /* Pagination Styles */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .pagination a, .pagination strong {
       display: inline-block;
       padding: 10px 16px;
@@ -79,6 +87,8 @@
       transition: all 0.2s ease;
       border: 1px solid rgba(255,255,255,0.2);
       text-decoration: none;
+      min-width: 42px;
+      text-align: center;
     }
 
     .pagination a:hover {
@@ -189,7 +199,7 @@
       </div>
     </div>
 
-    <!-- Pagination -->
+    <!-- Pagination (Now Horizontal) -->
     <div class="mt-8 flex justify-center">
       <div class="pagination"><?= $page; ?></div>
     </div>
